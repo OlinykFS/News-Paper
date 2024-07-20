@@ -1,0 +1,30 @@
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Environment variables
+.env
+
+# Database
+db.sqlite3
+
+# IDE specific files
+.idea/
+
+*.sublime-project
+*.sublime-workspace
+.vscode/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Logs and temporary files
+*.log
+*.pot
+*.mo
+
+# OS generated files
+.DS_Store
+Thumbs.db
