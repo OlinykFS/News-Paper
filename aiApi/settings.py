@@ -1,14 +1,11 @@
 from pathlib import Path
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = True
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -20,8 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ai.apps.AiConfig',
-    "parserapp.apps.ParserappConfig",
-    "blogApp.apps.BlogappConfig"
+    "parserapp.apps.ParserappConfig"
 ]
 
 MIDDLEWARE = [
