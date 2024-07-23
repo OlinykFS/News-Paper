@@ -1,28 +1,12 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from 'react';
+import HelloWorld from './components/helloWorld';
 
-function App() {
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/hello/")
-      .then((response) => {
-        setMessage(response.data.message);
-      })
-      .catch((error) => {
-        setError("Failed to fetch message");
-        console.error(error);
-      });
-  }, []); 
-
+const App = () => {
   return (
-    <div>
-      {error && <p>{error}as</p>}
-      <h1>asa{message}</h1>
+    <div className="App">
+      <HelloWorld />
     </div>
   );
-}
+};
 
 export default App;
