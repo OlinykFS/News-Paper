@@ -1,5 +1,5 @@
-# Project Name
-aiGen
+## Project Name
+AiGen
 
 ## Requirements
 - Docker

@@ -8,3 +8,4 @@ def hello_world(request):
 @api_view(['GET'])
 def bye_world(request):
     return Response({'message': 'Bye!!'})
+
