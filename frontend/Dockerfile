@@ -1,19 +1,10 @@
-FROM node:14
+FROM node:18
 
 WORKDIR /app
 
-COPY package*.json ./
-
+COPY package.json package-lock.json ./
 RUN npm install
 
-COPY . .
+EXPOSE 3000
 
-RUN npm run build
-
-FROM nginx:alpine
-
-COPY --from=0 /app/build /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]

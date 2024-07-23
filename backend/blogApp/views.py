@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
-def index(request):
-    return render(request, 'blogapp/index.html')
+@api_view(['GET'])
+def hello_world(request):
+    return Response({'message': 'Hello World!!'})
 
-def blogs(request):
-    return render(request, 'blogapp/blogs.html')
+@api_view(['GET'])
+def bye_world(request):
+    return Response({'message': 'Bye!!'})
