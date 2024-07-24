@@ -10,9 +10,9 @@ AiGen
 git clone https://github.com/OlinykFS/Blog-aiGen
 cd your-repo
 
-2. Create a .env file in the backend root directory:
-SECRET_KEY=your_secret_key
-DEBUG=True
+2. Create a .env file in the backend root directory:<br>
+ - SECRET_KEY=your_secret_key<br>
+ -  DEBUG=True
 
 3. Build and run containers:
 docker-compose up --build
