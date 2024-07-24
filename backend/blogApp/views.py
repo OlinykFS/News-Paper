@@ -9,3 +9,4 @@ def hello_world(request):
 def bye_world(request):
     return Response({'message': 'Bye!!'})
 
+
