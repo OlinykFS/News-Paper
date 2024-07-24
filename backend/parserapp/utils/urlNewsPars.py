@@ -11,4 +11,3 @@ def listLinkParser():
     for url in links_a:
         links.append(url.get('href'))
     return links
-
