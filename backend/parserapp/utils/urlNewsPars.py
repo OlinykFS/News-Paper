@@ -1,6 +1,6 @@
 import requests
 import bs4
-from ..models import PostLink
+from parserapp.models import PostLink
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -35,3 +35,5 @@ def listLinkParser():
                 logger.info(f"Link already exists: {href}")
 
     return parsed_links
+
+

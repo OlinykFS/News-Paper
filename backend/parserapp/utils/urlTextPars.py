@@ -1,13 +1,14 @@
 import requests
 import bs4
-import json
-from urlNewsPars import listLinkParser
+from parserapp.models import PostLink, Post
 
 def urlTextPars():
-    links = listLinkParser()
+    links = PostLink.objects.all()
+
     post = {}
 
-    for url in links:
+    for link in links:
+        url = link.url
         response = requests.get(url)
         soup = bs4.BeautifulSoup(response.text, 'html.parser')
         postTime = soup.find_all('div', class_='dw-article-time')
@@ -19,16 +20,21 @@ def urlTextPars():
             postTitle = postTitle[0].text.strip()
             postTime = postTime[0].text.strip()
 
-            post[url] = {
-                'time': postTime,
-                'title': postTitle,
-                'text': postText
-            }
+            if not Post.objects.filter(title=postTitle).exists():
+                Post.objects.create(
+                    title=postTitle,
+                    content=postText,
+                    created_at=postTime
+                )
+                post[url] = {
+                    'time': postTime,
+                    'title': postTitle,
+                    'text': postText
+                }
+            else:
+                print(f'Post with title "{postTitle}" already exists.')
+
         else:
             print(f'Missing data for URL: {url}')
 
     return post
-
-parsed_posts = urlTextPars()
-
-print(json.dumps(parsed_posts, indent=4, ensure_ascii=False))
