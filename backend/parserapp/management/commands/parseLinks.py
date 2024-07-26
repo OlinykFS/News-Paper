@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from backend.parserapp.utils import listLinkParser
+from parserapp.utils.urlNewsPars import listLinkParser
 
 class Command(BaseCommand):
     help = 'Parse and save links'
