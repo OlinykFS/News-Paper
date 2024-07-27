@@ -4,13 +4,11 @@ class PostLink(models.Model):
     url = models.URLField(unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.url
-
 class Post(models.Model):
-    title = models.CharField(max_length=255, unique=True)
+    title = models.CharField(max_length=255)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    processed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

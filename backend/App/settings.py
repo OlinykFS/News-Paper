@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'parserapp.apps.ParserappConfig',
     'corsheaders',
     'rest_framework',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
