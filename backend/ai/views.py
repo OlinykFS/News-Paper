@@ -1,6 +1,5 @@
 from django.http import JsonResponse
 from .utils.ai_processor import process_unprocessed_posts, get_processing_statistics
-from rest_framework.response import Response
 from rest_framework.decorators import api_view
 @api_view(["GET"])
 def process_posts(request):
