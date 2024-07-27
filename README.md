@@ -12,14 +12,15 @@ cd your-repo
 
 2. Create a .env file in the backend root directory:<br>
  - SECRET_KEY=your_secret_key<br>
- -  DEBUG=True
+ - DEBUG=True
+ - YOUR_API_KEY= your openai api key 
 
 3. Build and run containers:
 docker-compose up --build
 
 4. Access the application:
 - Frontend: http://localhost:3000
-- Backend: http://localhost:8000
+- Backend: http://localhost:8000/admin
 
 ## Development
 
