@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   backend:
     build:
@@ -6,7 +8,11 @@ services:
       - ./backend:/app
     ports:
       - "8000:8000"
-  
+    environment:
+      - DJANGO_SETTINGS_MODULE=App.settings
+    depends_on:
+      - redis
+
   frontend:
     build:
       context: ./frontend
@@ -20,3 +26,24 @@ services:
       - WATCHPACK_POLLING=true
     depends_on:
       - backend
+
+  redis:
+    image: redis:alpine
+
+  worker:
+    build:
+      context: ./backend
+    command: celery -A App.myCelery worker --loglevel=info
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - redis
+
+  beat:
+    build:
+      context: ./backend
+    command: celery -A App.myCelery beat --loglevel=info
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - redis
