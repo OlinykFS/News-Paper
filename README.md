@@ -1,5 +1,5 @@
 ## Project Name
-AiGen
+NewsPars
 
 ## Requirements
 - Docker
@@ -13,7 +13,7 @@ cd your-repo
 2. Create a .env file in the backend root directory:<br>
  - SECRET_KEY=your_secret_key<br>
  - DEBUG=True
- - YOUR_API_KEY= your openai api key 
+
 
 3. Build and run containers:
 docker-compose up --build
@@ -29,12 +29,4 @@ Containers will automatically reload when code changes are made.
 ## Stopping the Project
 docker-compose down
 
-## Additional Information
 
-This project is an AI-powered blog post generation system with automated topic discovery. Key features include:
-
-- Web scraping to automatically gather post topics from various internet resources
-- AI-driven content generation based on scraped topics
-- Web interface to view and manage generated posts
-
-The system autonomously creates a full blogging pipeline: from topic discovery to content creation and presentation. This project is under active development, and features may expand or change.
