@@ -7,4 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "App.wsgi:application"]
+RUN useradd -ms /bin/bash celery_user
+
+USER celery_user
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

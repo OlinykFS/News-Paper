@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   backend:
@@ -38,6 +38,7 @@ services:
       - ./backend:/app
     environment:
       - DJANGO_SETTINGS_MODULE=App.settings
+    user: celery_user
     depends_on:
       - redis
       - backend
@@ -50,6 +51,7 @@ services:
       - ./backend:/app
     environment:
       - DJANGO_SETTINGS_MODULE=App.settings
+    user: celery_user
     depends_on:
       - redis
       - backend
