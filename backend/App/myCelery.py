@@ -17,7 +17,7 @@ app.conf.beat_schedule = {
         'schedule': crontab(minute=0, hour='*/1'),
     },
     'parse-content-every-hour': {
-        'task': 'parserapp.tasks.parse_content_task',  
+        'task': 'parserapp.tasks.parse_content_task',
         'schedule': crontab(minute=30, hour='*/1'),
     },
 }
