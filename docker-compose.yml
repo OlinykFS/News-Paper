@@ -36,8 +36,11 @@ services:
     command: celery -A App.myCelery worker --loglevel=info
     volumes:
       - ./backend:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=App.settings
     depends_on:
       - redis
+      - backend
 
   beat:
     build:
@@ -45,5 +48,8 @@ services:
     command: celery -A App.myCelery beat --loglevel=info
     volumes:
       - ./backend:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=App.settings
     depends_on:
       - redis
+      - backend
