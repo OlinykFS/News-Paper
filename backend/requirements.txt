@@ -10,4 +10,4 @@ kombu>=5.3.7
 redis==5.0.0
 django-celery-beat==2.6.0
 importlib-metadata==6.6.0
-
+gunicorn~=21.0.0
