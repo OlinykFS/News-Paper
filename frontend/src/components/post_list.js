@@ -42,12 +42,12 @@ const PostList = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
-      <ul>
+    <div className="bg-blue-500 text-white p-4">
+      <ul className="p-6">
         {posts.length ? (
           posts.map((post) => (
-            <li key={post.id}>
-              <h2>{post.title}</h2>
+            <li className="p-10" key={post.id}>
+              <h2 className="">{post.title}</h2>
               <p>{post.content}</p>
               <p>{new Date(post.created_at).toLocaleDateString()}</p>
             </li>
@@ -56,7 +56,7 @@ const PostList = () => {
           <p>No posts available.</p>
         )}
       </ul>
-      <div>
+      <div className="fixed bottom-0">
         <button onClick={handlePrevPage} disabled={!prevPage}>
           Previous
         </button>
