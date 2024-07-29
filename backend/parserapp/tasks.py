@@ -3,9 +3,9 @@ from .utils.urlNewsPars import listLinkParser
 from .utils.urlTextPars import urlTextPars
 
 @shared_task
-def parse_links():
+def parse_links_task():
     return listLinkParser()
 
 @shared_task
-def parse_content():
+def parse_content_task():
     return urlTextPars()
