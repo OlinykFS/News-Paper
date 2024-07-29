@@ -1,12 +1,7 @@
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework import viewsets
+from parserapp.models import Post
+from blogApp.utils.serializers import PostSerializer
 
-@api_view(['GET'])
-def hello_world(request):
-    return Response({'message': 'Hello World!!'})
-
-@api_view(['GET'])
-def bye_world(request):
-    return Response({'message': 'Bye!!'})
-
-
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer

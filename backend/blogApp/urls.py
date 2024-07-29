@@ -1,7 +1,10 @@
-from django.urls import path
-from .views import hello_world, bye_world
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import PostViewSet
+
+router = DefaultRouter()
+router.register(r'posts', PostViewSet)
 
 urlpatterns = [
-    path('hello/', hello_world, name='hello_world'),
-    path('bye/', bye_world, name='bye_world'),
+    path('', include(router.urls)),
 ]
