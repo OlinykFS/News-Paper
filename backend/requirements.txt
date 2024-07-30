@@ -11,3 +11,5 @@ redis==5.0.0
 django-celery-beat==2.6.0
 importlib-metadata==6.6.0
 gunicorn~=21.0.0
+djangorestframework-simplejwt~=5.3.1
+djoser~=2.2.3
