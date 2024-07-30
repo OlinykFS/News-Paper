@@ -5,10 +5,10 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import Header from "./components/header";
-import Footer from "./components/footer";
-import Aside from "./components/aside";
-import PostList from "./components/post_list";
+import Header from "./components/Header/header";
+import Footer from "./components/Footer/footer";
+import Aside from "./components/Aside/aside";
+import PostList from "./components/MainLayouts/post_list";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 
@@ -20,7 +20,6 @@ const App = () => {
       <div className="App flex flex-col min-h-screen">
         <Header />
         <div className="flex flex-1">
-          <Aside className="w-1/4 bg-gray-200 p-4" />
           <div className="w-3/4 p-4">
             <Routes>
               <Route path="/login" element={<Login />} />
@@ -33,6 +32,7 @@ const App = () => {
               />
             </Routes>
           </div>
+          <Aside className="w-1/4 bg-gray-200 p-4" />
         </div>
         <Footer />
       </div>
