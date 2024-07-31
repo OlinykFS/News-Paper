@@ -23,7 +23,7 @@ const Login = () => {
        navigate('/'); 
      } catch (error) {
        console.error('Login error', error);
-       setError('Неверный email или пароль');
+       setError('wrong pass or email');
      }
    };
  
@@ -44,17 +44,17 @@ const Login = () => {
            />
          </div>
          <div>
-           <label htmlFor="password">Пароль:</label>
+           <label htmlFor="password">Pass:</label>
            <input
              id="password"
              type="password"
-             placeholder="Пароль"
+             placeholder="Pass"
              value={password}
              onChange={(e) => setPassword(e.target.value)}
              required
            />
          </div>
-         <button type="submit">Войти</button>
+         <button type="submit">Login</button>
        </form>
      </div>
    );

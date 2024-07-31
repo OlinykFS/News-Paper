@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Header from "./components/Header/header";
 import Footer from "./components/Footer/footer";
 import Aside from "./components/Aside/aside";
@@ -12,9 +7,12 @@ import PostList from "./components/MainLayouts/post_list";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 
-const App = () => {
+const ProtectedRoute = ({ children }) => {
   const isAuthenticated = !!localStorage.getItem("access_token");
+  return isAuthenticated ? children : <Navigate to="/login" />;
+};
 
+const App = () => {
   return (
     <Router>
       <div className="App flex flex-col min-h-screen">
@@ -27,7 +25,9 @@ const App = () => {
               <Route
                 path="/"
                 element={
-                  isAuthenticated ? <PostList /> : <Navigate to="/login" />
+                  <ProtectedRoute>
+                    <PostList />
+                  </ProtectedRoute>
                 }
               />
             </Routes>
