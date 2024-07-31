@@ -56,12 +56,8 @@ const PostList = ({ className }) => {
           <p>No posts available.</p>
         )}
       </ul>
-      <div className="fixed bottom-0">
-        <button
-          className="absolute"
-          onClick={handlePrevPage}
-          disabled={!prevPage}
-        >
+      <div >
+        <button className="px-6" onClick={handlePrevPage} disabled={!prevPage}>
           Previous
         </button>
         <button onClick={handleNextPage} disabled={!nextPage}>
