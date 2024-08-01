@@ -14,7 +14,7 @@ const Home = () => {
           <Aside className="lg:col-span-1" />
         </div>
       </main>
-      <Footer />
+    
     </div>
   );
 };

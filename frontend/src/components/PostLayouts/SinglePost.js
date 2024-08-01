@@ -27,11 +27,11 @@ const SinglePost = () => {
   if (error) return <p className="text-center text-red-500 mt-4">Error: {error.message}</p>;
 
   return (
-    <div className="container mx-auto p-4 bg-white shadow-md rounded-lg">
+    <div className="bg-gray-350 shadow-md rounded-lg p-4">
       <img src={post.image} alt={post.title} className="w-full h-64 object-cover rounded-lg mb-4" />
-      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-      <p className="text-gray-700 mb-4">{post.content}</p>
-      <div className="text-gray-500 text-sm flex justify-between">
+      <h1 className="text-3xl font-bold mb-4 text-white">{post.title}</h1>
+      <p className="text-black mb-4">{post.content}</p>
+      <div className="text-gray-400 text-sm flex justify-between">
         <span>{post.author}</span>
         <span>{new Date(post.created_at).toLocaleDateString()}</span>
       </div>

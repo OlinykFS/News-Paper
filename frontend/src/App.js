@@ -13,6 +13,7 @@ import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import Profile from "./components/MainLayouts/Profile";
 import SinglePost from "./components/PostLayouts/SinglePost";
+import Footer from "./components/Footer/footer"; // Добавьте импорт футера
 
 const ProtectedRoute = ({ element }) => {
   const { isAuthenticated, loading } = React.useContext(AuthContext);
@@ -31,18 +32,25 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/profile"
-            element={<ProtectedRoute element={<Profile />} />}
-          />
-          <Route path="/register" element={<Register />} />
-          <Route path="/post-list" element={<PostList />} />
-          <Route path="/posts/:id" element={<SinglePost />} />
-        </Routes>
+        <div className="flex mx-auto flex-col min-h-screen">
+          <Header />
+          <main className="max-w-screen-xl">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route
+                path="/profile"
+                element={<ProtectedRoute element={<Profile />} />}
+              />
+              <Route path="/register" element={<Register />} />
+              <Route path="/post-list" element={<PostList />} />
+              <Route path="/posts/:id" element={<SinglePost />} />
+            </Routes>
+          </main>
+          <div>
+            <Footer />
+          </div>
+        </div>
       </AuthProvider>
     </Router>
   );
