@@ -34,7 +34,7 @@ function App() {
       <AuthProvider>
         <div className="flex mx-auto flex-col min-h-screen">
           <Header />
-          <main className="max-w-screen-xl">
+          <main className="px-12 min-h-screen min-w-screen-xl">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
