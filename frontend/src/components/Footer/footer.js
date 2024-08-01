@@ -1,18 +1,19 @@
-import React from "react"
+import React from 'react';
 
-const footer = () => {
-   return (
-      <footer className="relative bottom-0 w-full h-10 bg-slate-400 ">
-         <div>
-            <nav>
-               <ul className="flex align-middle justify-around ">
-                  <li className="">About</li>
-                  <li>Contact</li>
-                  <li>Source</li>
-               </ul>
-            </nav>
-         </div>
-      </footer>
-   );
+const Footer = () => {
+  return (
+    <footer className="bottom-0 min-w-full absolute bg-gray-800 text-white py-4">
+      <div className="container mx-auto">
+        <nav>
+          <ul className="flex justify-around">
+            <li className="hover:text-gray-400">About</li>
+            <li className="hover:text-gray-400">Contact</li>
+            <li className="hover:text-gray-400">Source</li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  );
 };
-export default footer;
+
+export default Footer;

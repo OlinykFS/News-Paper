@@ -2,14 +2,14 @@ import React from 'react';
 
 const Aside = ({ className }) => {
   return (
-    <aside className={className}>
+    <aside className={`${className} p-4 bg-white shadow-md rounded-lg`}>
       <div className="top-stories">
-        <h2>Top Stories</h2>
-        <ul>
-          <li>Lesson Learned As A Designer-Founder</li>
-          <li>A Complete Guide To Live Validation UX</li>
-          <li>Building A Retro Draggable Web</li>
-          <li>Rethinking Star Ratings For Readers</li>
+        <h2 className="text-xl font-bold mb-4">Top Stories</h2>
+        <ul className="space-y-4">
+          <li className="hover:text-gray-600">Lesson Learned As A Designer-Founder</li>
+          <li className="hover:text-gray-600">A Complete Guide To Live Validation UX</li>
+          <li className="hover:text-gray-600">Building A Retro Draggable Web</li>
+          <li className="hover:text-gray-600">Rethinking Star Ratings For Readers</li>
         </ul>
       </div>
     </aside>
