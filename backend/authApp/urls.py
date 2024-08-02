@@ -1,7 +1,7 @@
-# authApp/urls.py
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenBlacklistView
-from .views import UserProfileView
+
+from authApp.views import UserProfileView
 
 urlpatterns = [
     path('auth/', include('djoser.urls')),

@@ -10,8 +10,6 @@ services:
       - "8000:8000"
     environment:
       - DJANGO_SETTINGS_MODULE=App.settings
-    depends_on:
-      - redis
 
   frontend:
     build:
@@ -27,31 +25,3 @@ services:
     depends_on:
       - backend
 
-  redis:
-    image: redis:alpine
-
-  worker:
-    build:
-      context: ./backend
-    command: celery -A App.myCelery worker --loglevel=info
-    volumes:
-      - ./backend:/app
-    environment:
-      - DJANGO_SETTINGS_MODULE=App.settings
-    user: celery_user
-    depends_on:
-      - redis
-      - backend
-
-  beat:
-    build:
-      context: ./backend
-    command: celery -A App.myCelery beat --loglevel=info
-    volumes:
-      - ./backend:/app
-    environment:
-      - DJANGO_SETTINGS_MODULE=App.settings
-    user: celery_user
-    depends_on:
-      - redis
-      - backend

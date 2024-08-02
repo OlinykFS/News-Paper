@@ -13,7 +13,7 @@ import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import Profile from "./components/MainLayouts/Profile";
 import SinglePost from "./components/PostLayouts/SinglePost";
-import Footer from "./components/Footer/footer"; // Добавьте импорт футера
+import Footer from "./components/Footer/footer";
 
 const ProtectedRoute = ({ element }) => {
   const { isAuthenticated, loading } = React.useContext(AuthContext);
