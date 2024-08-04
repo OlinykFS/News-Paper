@@ -18,18 +18,15 @@ const Profile = () => {
       isAuthenticated
     );
     if (!isAuthenticated) {
-      console.log("User is not authenticated. Redirecting to /login");
       navigate("/login");
       return;
     }
 
     const fetchUserData = async () => {
       try {
-        console.log("Fetching user data...");
         const response = await api.get("/auth/users/me/");
         setUser(response.data);
       } catch (err) {
-        console.error("Error fetching user data", err);
         setError("Failed to load user data");
         logout();
       } finally {
@@ -51,7 +48,6 @@ const Profile = () => {
       setUser(response.data);
       setEditing(false);
     } catch (err) {
-      console.error("Error updating user data", err);
       setError("Failed to update data");
     }
   };
