@@ -1,20 +1,12 @@
 import React from 'react';
-import Aside from '../Aside/aside';
 import PostList from '../PostLayouts/PostList';
+import MainLayout from './MainLayout';
 
 const Home = () => {
   return (
-    <div className="bg-black-100 max-h-screen">
-      <main className="container mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
-            <PostList className="mb-8" />
-          </div>
-          <Aside className="lg:col-span-1" />
-        </div>
-      </main>
-    
-    </div>
+    <MainLayout>
+      <PostList className="mb-8" />
+    </MainLayout>
   );
 };
 

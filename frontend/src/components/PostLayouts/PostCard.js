@@ -2,15 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PostCard = ({ post }) => (
-  <div className="bg-white shadow-md rounded-lg p-4 mb-4">
-    <img src={post.image} alt={post.title} className="w-full h-40 object-cover rounded-lg mb-4" />
-    <h2 className="text-xl font-bold mb-2"><Link to={`/posts/${post.id}`}>{post.title}</Link></h2>
-    <p className="text-gray-700">{post.excerpt}</p>
-    <div className="text-gray-500 text-sm flex justify-between mt-4">
-      <span>{post.author}</span>
-      <span>{new Date(post.created_at).toLocaleDateString()}</span>
-    </div>
-  </div>
+  <Link to={`/posts/${post.id}`} className="block bg-white shadow rounded-lg p-4 mb-4 transition duration-300 hover:shadow-lg">
+    <h2 className="text-xl font-bold mb-2">
+      <span className="hover:text-blue-500" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+    </h2>
+    <div 
+      dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} 
+      className="text-gray-700 mb-4 overflow-hidden line-clamp-4"
+    />
+  </Link>
 );
 
 export default PostCard;

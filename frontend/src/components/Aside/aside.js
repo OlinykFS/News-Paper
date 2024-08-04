@@ -2,7 +2,7 @@ import React from 'react';
 
 const Aside = ({ className }) => {
   return (
-    <aside className={`${className} p-4 bg-white shadow-md rounded-lg`}>
+    <aside className={`${className} p-4 bg-white shadow-md rounded-lg sticky top-20`}>
       <div className="top-stories">
         <h2 className="text-xl font-bold mb-4">Top Stories</h2>
         <ul className="space-y-4">

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import api from "../../services/api";
 
 const SinglePost = () => {
   const { id } = useParams();
@@ -12,10 +11,14 @@ const SinglePost = () => {
     const fetchPost = async () => {
       setLoading(true);
       try {
-        const response = await api.get(`/api/posts/${id}/`);
-        setPost(response.data);
+        const response = await fetch(`https://dig.watch/wp-json/wp/v2/posts/${id}`);
+        if (!response.ok) {
+          throw new Error("Error");
+        }
+        const data = await response.json();
+        setPost(data);
       } catch (err) {
-        setError(err);
+        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -23,25 +26,17 @@ const SinglePost = () => {
     fetchPost();
   }, [id]);
 
-  if (loading) return <p className="text-center mt-4">Loading...</p>;
-  if (error)
-    return (
-      <p className="text-center text-red-500 mt-4">Error: {error.message}</p>
-    );
+  if (loading) return <p className="text-center">Loading...</p>;
+  if (error) return <p className="text-center text-red-500">Error: {error}</p>;
+  if (!post) return <p className="text-center">Post not found.</p>;
 
   return (
-    <div className="bg-gray-350 shadow-md rounded-lg p-4">
-      <img
-        src={post.image}
-        alt={post.title}
-        className="w-full h-64 object-cover rounded-lg mb-4"
+    <div className="bg-white shadow rounded-lg p-6 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold mb-4" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+      <div 
+        dangerouslySetInnerHTML={{ __html: post.content.rendered }} 
+        className="mb-4 prose prose-lg max-w-none"
       />
-      <h1 className="text-3xl font-bold mb-4 text-white">{post.title}</h1>
-      <p className="text-black mb-4">{post.content}</p>
-      <div className="text-gray-400 text-sm flex justify-between">
-        <span>{post.author}</span>
-        <span>{new Date(post.created_at).toLocaleDateString()}</span>
-      </div>
     </div>
   );
 };
