@@ -9,8 +9,10 @@ const MainLayout = ({ children }) => {
           <div className="lg:col-span-2">
             {children}
           </div>
-          <div className="lg:col-span-1 sticky top-20">
-            <Aside />
+          <div className="lg:col-span-1">
+            <div className="sticky top-20">
+              <Aside />
+            </div>
           </div>
         </div>
       </main>
