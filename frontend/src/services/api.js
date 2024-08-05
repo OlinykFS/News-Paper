@@ -4,7 +4,6 @@ const api = axios.create({
   baseURL: 'http://localhost:8000/',
 });
 
-
 const getCsrfToken = () => {
   const name = 'csrftoken';
   const value = `; ${document.cookie}`;
@@ -26,5 +25,54 @@ api.interceptors.request.use(
   },
   (error) => Promise.reject(error)
 );
+
+export const fetchPosts = async () => {
+  try {
+    const response = await api.get('blog/posts/');
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    throw error;
+  }
+};
+
+export const fetchPost = async (id) => {
+  try {
+    const response = await api.get(`blog/posts/${id}/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching post:", error);
+    throw error;
+  }
+};
+
+export const createPost = async (postData) => {
+  try {
+    const response = await api.post('blog/posts/', postData);
+    return response.data;
+  } catch (error) {
+    console.error("Error creating post:", error);
+    throw error;
+  }
+};
+
+export const updatePost = async (id, postData) => {
+  try {
+    const response = await api.put(`blog/posts/${id}/`, postData);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating post:", error);
+    throw error;
+  }
+};
+
+export const deletePost = async (id) => {
+  try {
+    await api.delete(`blog/posts/${id}/`);
+  } catch (error) {
+    console.error("Error deleting post:", error);
+    throw error;
+  }
+};
 
 export default api;
