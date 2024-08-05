@@ -5,7 +5,7 @@ import MainLayout from './MainLayout';
 const Home = () => {
   return (
     <MainLayout>
-      <PostList className="mb-8" />
+      <PostList />
     </MainLayout>
   );
 };

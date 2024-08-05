@@ -12,26 +12,20 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkToken = async () => {
       const token = localStorage.getItem("access_token");
-      console.log("Token from localStorage:", token);
-
       if (token) {
         try {
           api.defaults.headers.common["Authorization"] = `JWT ${token}`;
-          console.log("Checking token...");
           await api.get("/auth/users/me/");
           setIsAuthenticated(true);
-          console.log("User authenticated");
         } catch (err) {
           console.error("Token validation failed", err);
           localStorage.removeItem("access_token");
           localStorage.removeItem("refresh_token");
           api.defaults.headers.common["Authorization"] = "";
           setIsAuthenticated(false);
-          console.log("User not authenticated");
         }
       } else {
         setIsAuthenticated(false);
-        console.log("No token found");
       }
 
       setLoading(false);
@@ -51,7 +45,6 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(true);
       navigate("/");
     } catch (error) {
-      console.error("Login error:", error);
     }
   };
 
@@ -63,7 +56,6 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(false);
       navigate("/login");
     } catch (error) {
-      console.error("Logout error:", error);
     }
   };
 

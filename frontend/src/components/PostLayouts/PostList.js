@@ -11,14 +11,14 @@ function PostList() {
       try {
         const response = await fetch(`https://dig.watch/wp-json/wp/v2/posts`);
         if (!response.ok) {
-          throw new Error("Error");
+          throw new Error("Error fetching posts");
         }
         let data = await response.json();
         data = data.filter(post => !post.title.rendered.includes("Telegram Bot Test Test"));
         setPosts(data);
-        setLoading(false);
       } catch (error) {
         setError(error.message);
+      } finally {
         setLoading(false);
       }
     };
@@ -37,7 +37,7 @@ function PostList() {
             <PostCard post={post} key={post.id} />
           ))
         ) : (
-          <p>Not news available.</p>
+          <p>No news available.</p>
         )}
       </div>
     </div>

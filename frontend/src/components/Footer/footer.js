@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 bottom-0 text-white py-4">
-      <div className="">
+    <footer className="bg-gray-800 text-white py-4">
+      <div className="container mx-auto">
         <nav>
           <ul className="flex justify-around">
             <li className="hover:text-gray-400">About</li>
