@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import PostCard from './PostCard'; 
+import React, { useState, useEffect } from 'react';
+import PostCard from './PostCard';
 
 function PostList() {
   const [posts, setPosts] = useState([]);

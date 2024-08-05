@@ -1,7 +1,7 @@
-import React from "react";
-import { deletePost } from "../../services/api";
+import React from 'react';
+import { deletePost } from '../../services/api';
 
-const PostList = ({ posts, refreshPosts }) => {
+const UserPostList = ({ posts, refreshPosts }) => {
   if (!Array.isArray(posts)) {
     console.error("Posts is not an array:", posts);
     return null;
@@ -14,7 +14,7 @@ const PostList = ({ posts, refreshPosts }) => {
   const handleDelete = async (postId) => {
     try {
       await deletePost(postId);
-      refreshPosts();
+      await refreshPosts();
     } catch (error) {
       console.error("Error deleting post:", error);
     }
@@ -38,4 +38,4 @@ const PostList = ({ posts, refreshPosts }) => {
   );
 };
 
-export default PostList;
+export default UserPostList;

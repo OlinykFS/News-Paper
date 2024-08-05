@@ -4,7 +4,7 @@ import api from "../../services/api";
 import { AuthContext } from "../../Context/AuthContext";
 import ProfileInfo from "../UsersPostLayouts/ProfileInfo";
 import CreatePost from "../UsersPostLayouts/CreatePost";
-import PostList from "../UsersPostLayouts/PostList";
+import UserPostList from "../UsersPostLayouts/UserPostList";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -26,8 +26,6 @@ const Profile = () => {
         setUser(response.data);
 
         const postsResponse = await api.get("blog/my-posts/");
-        console.log("Posts response data:", postsResponse.data);
-
         if (Array.isArray(postsResponse.data.results)) {
           setPosts(postsResponse.data.results);
         } else {
@@ -67,7 +65,7 @@ const Profile = () => {
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg mt-8">
       <ProfileInfo user={user} setUser={setUser} setError={setError} />
       <CreatePost refreshPosts={refreshPosts} setError={setError} />
-      <PostList posts={posts} refreshPosts={refreshPosts} />
+      <UserPostList posts={posts} refreshPosts={refreshPosts} />
     </div>
   );
 };

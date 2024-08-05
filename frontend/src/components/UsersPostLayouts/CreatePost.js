@@ -9,25 +9,23 @@ const CreatePost = ({ refreshPosts, setError }) => {
   };
 
   const handleCreatePost = async (e) => {
-   e.preventDefault();
-   try {
-     await api.post("/blog/posts/", newPost);
-     setNewPost({ title: "", content: "" });
-     await refreshPosts();
-   } catch (err) {
-     setError("Failed to create post");
-   }
- };
+    e.preventDefault();
+    try {
+      await api.post("/blog/posts/", newPost);
+      setNewPost({ title: "", content: "" });
+      await refreshPosts(); 
+    } catch (error) {
+      console.error("Error creating post:", error);
+      setError("Failed to create post");
+    }
+  };
 
   return (
-    <div className="mt-8">
-      <h2 className="text-2xl font-semibold mb-6">Create New Post</h2>
+    <div className="mb-8">
+      <h2 className="text-2xl font-semibold mb-4">Create New Post</h2>
       <form onSubmit={handleCreatePost}>
         <div className="mb-4">
-          <label
-            htmlFor="title"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="title" className="block text-sm font-medium text-gray-700">
             Title
           </label>
           <input
@@ -41,10 +39,7 @@ const CreatePost = ({ refreshPosts, setError }) => {
           />
         </div>
         <div className="mb-6">
-          <label
-            htmlFor="content"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="content" className="block text-sm font-medium text-gray-700">
             Content
           </label>
           <textarea

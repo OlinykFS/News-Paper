@@ -23,6 +23,7 @@ const Header = () => {
             <li><Link to="/news" className="text-gray-600 hover:text-gray-900">News Category</Link></li>
             {isAuthenticated ? (
               <>
+                <li><Link to="/my-posts" className="text-gray-600 hover:text-gray-900">My Posts</Link></li>
                 <li><Link to="/profile" className="text-gray-600 hover:text-gray-900">Profile</Link></li>
                 <li><button onClick={handleLogout} className="text-gray-600 hover:text-gray-900">Logout</button></li>
               </>

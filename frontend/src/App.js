@@ -10,6 +10,7 @@ import Profile from "./components/MainLayouts/Profile";
 import SinglePostPage from "./components/MainLayouts/singlePostPage";
 import Footer from "./components/Footer/footer";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import MyPosts from './components/UsersPostLayouts/myPosts'; 
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+              <Route path="/my-posts" element={<ProtectedRoute element={<MyPosts />} />} /> 
               <Route path="/register" element={<Register />} />
               <Route path="/post-list" element={<PostList />} />
               <Route path="/posts/:id" element={<SinglePostPage />} />
