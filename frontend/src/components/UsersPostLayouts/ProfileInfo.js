@@ -86,4 +86,3 @@ const ProfileInfo = ({ user, setUser, setError }) => {
 };
 
 export default ProfileInfo;
-      

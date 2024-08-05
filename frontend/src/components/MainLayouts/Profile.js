@@ -5,7 +5,6 @@ import { AuthContext } from "../../Context/AuthContext";
 import ProfileInfo from "../UsersPostLayouts/ProfileInfo";
 import CreatePost from "../UsersPostLayouts/CreatePost";
 import PostList from "../UsersPostLayouts/PostList";
-import { fetchUserPosts } from "../../services/api";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -25,10 +24,14 @@ const Profile = () => {
       try {
         const response = await api.get("/auth/users/me/");
         setUser(response.data);
+
         const postsResponse = await api.get("blog/my-posts/");
+        console.log("Posts response data:", postsResponse.data);
+
         if (Array.isArray(postsResponse.data.results)) {
           setPosts(postsResponse.data.results);
         } else {
+          console.error("Unexpected data format:", postsResponse.data);
           setPosts([]);
         }
       } catch (err) {
@@ -44,11 +47,11 @@ const Profile = () => {
 
   const refreshPosts = async () => {
     try {
-      const response = await fetchUserPosts();
-      if (Array.isArray(response.results)) {
-        setPosts(response.results);
+      const postsResponse = await api.get("blog/my-posts/");
+      if (Array.isArray(postsResponse.data.results)) {
+        setPosts(postsResponse.data.results);
       } else {
-
+        console.error("Unexpected data format:", postsResponse.data);
         setPosts([]);
       }
     } catch (err) {
@@ -58,14 +61,13 @@ const Profile = () => {
   };
 
   if (loading) return <div className="text-center mt-4">Loading...</div>;
-  if (error)
-    return <div className="text-center text-red-500 mt-4">{error}</div>;
+  if (error) return <div className="text-center text-red-500 mt-4">{error}</div>;
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg mt-8">
       <ProfileInfo user={user} setUser={setUser} setError={setError} />
       <CreatePost refreshPosts={refreshPosts} setError={setError} />
-      <PostList posts={posts} />
+      <PostList posts={posts} refreshPosts={refreshPosts} />
     </div>
   );
 };
