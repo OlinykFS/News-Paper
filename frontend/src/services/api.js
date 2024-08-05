@@ -28,11 +28,21 @@ api.interceptors.request.use(
 
 export const fetchPosts = async () => {
   try {
-    const response = await api.get('blog/posts/');
+    const response = await api.get('/blog/posts/');
     return response.data;
   } catch (error) {
     console.error("Error fetching posts:", error);
     throw error;
+  }
+};
+
+export const fetchUserPosts = async () => {
+  try {
+    const response = await api.get('/blog/my-posts/'); 
+    return response.data; 
+  } catch (error) {
+    console.error("Error fetching user posts:", error);
+    throw error; 
   }
 };
 

@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import { AuthContext } from "../../Context/AuthContext";
+import ProfileInfo from "../UsersPostLayouts/ProfileInfo";
+import CreatePost from "../UsersPostLayouts/CreatePost";
+import PostList from "../UsersPostLayouts/PostList";
+import { fetchUserPosts } from "../../services/api";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [editing, setEditing] = useState(false);
-  const [updatedUser, setUpdatedUser] = useState({});
-  const { isAuthenticated, logout } = React.useContext(AuthContext);
+  const [posts, setPosts] = useState([]);
+  const { isAuthenticated, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,6 +25,12 @@ const Profile = () => {
       try {
         const response = await api.get("/auth/users/me/");
         setUser(response.data);
+        const postsResponse = await api.get("blog/my-posts/");
+        if (Array.isArray(postsResponse.data.results)) {
+          setPosts(postsResponse.data.results);
+        } else {
+          setPosts([]);
+        }
       } catch (err) {
         setError("Failed to load user data");
         logout();
@@ -33,76 +42,30 @@ const Profile = () => {
     fetchUserData();
   }, [isAuthenticated, navigate, logout]);
 
-  const handleEdit = () => {
-    setUpdatedUser(user);
-    setEditing(true);
-  };
-
-  const handleSave = async () => {
+  const refreshPosts = async () => {
     try {
-      const response = await api.patch("/auth/users/me/", updatedUser);
-      setUser(response.data);
-      setEditing(false);
+      const response = await fetchUserPosts();
+      if (Array.isArray(response.results)) {
+        setPosts(response.results);
+      } else {
+
+        setPosts([]);
+      }
     } catch (err) {
-      setError("Failed to update data");
+      console.error("Error refreshing posts:", err);
+      setPosts([]);
     }
   };
 
   if (loading) return <div className="text-center mt-4">Loading...</div>;
-  if (error) return <div className="text-center text-red-500 mt-4">{error}</div>;
+  if (error)
+    return <div className="text-center text-red-500 mt-4">{error}</div>;
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg mt-8">
-      <h2 className="text-2xl font-semibold mb-6">Profile</h2>
-      {user && !editing ? (
-        <div>
-          <p className="mb-4">
-            <span className="font-semibold">Email:</span> {user.email}
-          </p>
-          <p className="mb-6">
-            <span className="font-semibold">Username:</span> {user.username}
-          </p>
-          <button
-            onClick={handleEdit}
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-          >
-            Edit
-          </button>
-        </div>
-      ) : (
-        <div>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-            <input
-              id="email"
-              type="email"
-              value={updatedUser.email || ""}
-              onChange={(e) =>
-                setUpdatedUser({ ...updatedUser, email: e.target.value })
-              }
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div className="mb-6">
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
-            <input
-              id="username"
-              type="text"
-              value={updatedUser.username || ""}
-              onChange={(e) =>
-                setUpdatedUser({ ...updatedUser, username: e.target.value })
-              }
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <button
-            onClick={handleSave}
-            className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-          >
-            Save
-          </button>
-        </div>
-      )}
+      <ProfileInfo user={user} setUser={setUser} setError={setError} />
+      <CreatePost refreshPosts={refreshPosts} setError={setError} />
+      <PostList posts={posts} />
     </div>
   );
 };
