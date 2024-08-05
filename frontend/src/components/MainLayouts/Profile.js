@@ -13,10 +13,6 @@ const Profile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(
-      "Profile useEffect triggered. isAuthenticated:",
-      isAuthenticated
-    );
     if (!isAuthenticated) {
       navigate("/login");
       return;
@@ -53,18 +49,17 @@ const Profile = () => {
   };
 
   if (loading) return <div className="text-center mt-4">Loading...</div>;
-  if (error)
-    return <div className="text-center text-red-500 mt-4">{error}</div>;
+  if (error) return <div className="text-center text-red-500 mt-4">{error}</div>;
 
   return (
-    <div className="border-4 border-solid border-black-700  bg-white mt-4 rounded shadow">
-      <h2 className="text-2xl font-semibold mb-4">Profile</h2>
+    <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg mt-8">
+      <h2 className="text-2xl font-semibold mb-6">Profile</h2>
       {user && !editing ? (
         <div>
-          <p className="mb-2">
+          <p className="mb-4">
             <span className="font-semibold">Email:</span> {user.email}
           </p>
-          <p className="mb-4">
+          <p className="mb-6">
             <span className="font-semibold">Username:</span> {user.username}
           </p>
           <button
@@ -77,25 +72,27 @@ const Profile = () => {
       ) : (
         <div>
           <div className="mb-4">
-            <label className="block text-gray-700">Email</label>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
             <input
+              id="email"
               type="email"
-              value={updatedUser.email}
+              value={updatedUser.email || ""}
               onChange={(e) =>
                 setUpdatedUser({ ...updatedUser, email: e.target.value })
               }
-              className="w-full px-3 py-2 border rounded"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700">Username</label>
+          <div className="mb-6">
+            <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
             <input
+              id="username"
               type="text"
-              value={updatedUser.username}
+              value={updatedUser.username || ""}
               onChange={(e) =>
                 setUpdatedUser({ ...updatedUser, username: e.target.value })
               }
-              className="w-full px-3 py-2 border rounded"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <button

@@ -15,24 +15,19 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="flex mx-auto flex-col">
+        <div className="flex flex-col min-h-screen">
           <Header />
-          <main className="px-12 pt-16 min-h-screen min-w-screen-xl">
+          <main className="flex-grow bg-gray-100 py-8">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route
-                path="/profile"
-                element={<ProtectedRoute element={<Profile />} />}
-              />
+              <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
               <Route path="/register" element={<Register />} />
               <Route path="/post-list" element={<PostList />} />
               <Route path="/posts/:id" element={<SinglePostPage />} />
             </Routes>
           </main>
-          <div>
-            <Footer />
-          </div>
+          <Footer />
         </div>
       </AuthProvider>
     </Router>
@@ -40,3 +35,4 @@ function App() {
 }
 
 export default App;
+  
