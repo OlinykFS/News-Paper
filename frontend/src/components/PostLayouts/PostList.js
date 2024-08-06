@@ -26,8 +26,8 @@ function PostList() {
     fetchPosts();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return( <p className='loading'>Loading...</p>);
+  if (error) return( <p className='error'>Error: {error}</p>);
 
   return (
     <div className="container mx-auto px-4">

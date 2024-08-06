@@ -1,0 +1,36 @@
+@tailwind base;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    @apply overflow-y-scroll;
+  }
+}
+  
+  #root {
+    @apply w-full;
+  }
+  .container {
+   width: 100%;
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 20px;
+ }

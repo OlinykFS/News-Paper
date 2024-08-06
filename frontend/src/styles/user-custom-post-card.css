@@ -1,0 +1,15 @@
+.user-custom-post-card h3.title {
+   overflow-wrap: break-word;
+   font-size: 1.2rem;
+   line-height: 1.7;
+   font-weight: 600;
+   padding-bottom: 1rem;
+ }
+ 
+ .user-custom-post-card p.content {
+   overflow-wrap: break-word;
+   font-size: 1rem;
+   font-weight: normal;
+   padding-bottom: .5rem;
+ }
+ 

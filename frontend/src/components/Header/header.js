@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../Context/AuthContext';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Header = () => {
   const { isAuthenticated, logout } = useContext(AuthContext);
@@ -9,7 +9,7 @@ const Header = () => {
     try {
       await logout();
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error("Logout error:", error);
     }
   };
 
@@ -79,7 +79,10 @@ const Header = () => {
             ) : (
               <>
                 <li>
-                  <Link to="/login" className="text-gray-600 hover:text-gray-900">
+                  <Link
+                    to="/login"
+                    className="text-gray-600 hover:text-gray-900"
+                  >
                     Login
                   </Link>
                 </li>

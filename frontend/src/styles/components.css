@@ -1,0 +1,60 @@
+@tailwind components;
+
+@layer components {
+  .custom-post-card {
+    @apply block bg-white shadow rounded-lg p-4 mb-4 transition duration-300 hover:shadow-lg;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .loading {
+    @apply text-center mt-4;
+  }
+
+  .error {
+    @apply text-center text-red-500 mt-4;
+  }
+
+  .single-post {
+    @apply bg-white shadow rounded-lg p-6 max-w-4xl mx-auto;
+  }
+
+  .user-custom-post-card {
+    @apply bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto;
+  }
+
+  .delete-button {
+    @apply bg-red-500 text-white py-1 px-3 rounded transition duration-200;
+    border: 1px solid transparent;
+  }
+  .delete-button:hover {
+    @apply bg-transparent text-black;
+    border: 1px solid black;
+  }
+
+  .positive-button {
+    @apply bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600;
+    border: 2px solid transparent;
+  }
+  .positive-button:hover {
+    @apply bg-transparent text-gray-800 transition duration-200;
+    border: 2px solid rgb(135, 175, 235);
+  }
+
+  .input-form {
+    @apply mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+
+  .input-label {
+    @apply block text-sm font-medium text-gray-700;
+  }
+
+  .title {
+    @apply text-2xl font-semibold mb-4;
+  }
+
+  .save-button {
+    @apply bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600;
+  }
+}

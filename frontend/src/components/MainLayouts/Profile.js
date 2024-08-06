@@ -58,7 +58,7 @@ const Profile = () => {
     }
   };
 
-  if (loading) return <div className="text-center mt-4">Loading...</div>;
+  if (loading) return <div className="loading">Loading...</div>;
   if (error) return <div className="text-center text-red-500 mt-4">{error}</div>;
 
   return (

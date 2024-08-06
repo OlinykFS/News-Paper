@@ -21,15 +21,12 @@ const UserPostList = ({ posts, refreshPosts }) => {
   };
 
   return (
-    <ul className="space-y-4">
+    <ul className="space-y-4 ">
       {posts.map((post) => (
-        <li key={post.id} className="p-4 bg-white shadow-md rounded-lg border border-gray-200">
-          <h3 className="text-lg font-semibold mb-2">{post.title}</h3>
-          <p className="whitespace-normal break-words">{post.content}</p>
-          <button
-            onClick={() => handleDelete(post.id)}
-            className="mt-4 bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
-          >
+        <li key={post.id} className="user-custom-post-card">
+          <h3 className="title">{post.title}</h3>
+          <p className="content">{post.content}</p>
+          <button onClick={() => handleDelete(post.id)} className="delete-button">
             Delete
           </button>
         </li>

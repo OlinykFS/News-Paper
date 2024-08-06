@@ -21,7 +21,7 @@ const ProfileInfo = ({ user, setUser, setError }) => {
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold mb-6">Profile</h2>
+      <h2 className="title">Profile</h2>
       {user && !editing ? (
         <div>
           <p className="mb-4">
@@ -30,20 +30,14 @@ const ProfileInfo = ({ user, setUser, setError }) => {
           <p className="mb-6">
             <span className="font-semibold">Username:</span> {user.username}
           </p>
-          <button
-            onClick={handleEdit}
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-          >
+          <button onClick={handleEdit} className="positive-button">
             Edit
           </button>
         </div>
       ) : (
         <div>
           <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="email" className="input-label">
               Email
             </label>
             <input
@@ -53,13 +47,13 @@ const ProfileInfo = ({ user, setUser, setError }) => {
               onChange={(e) =>
                 setUpdatedUser({ ...updatedUser, email: e.target.value })
               }
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="input-form"
             />
           </div>
           <div className="mb-6">
             <label
               htmlFor="username"
-              className="block text-sm font-medium text-gray-700"
+              className="input-label"
             >
               Username
             </label>
@@ -70,13 +64,10 @@ const ProfileInfo = ({ user, setUser, setError }) => {
               onChange={(e) =>
                 setUpdatedUser({ ...updatedUser, username: e.target.value })
               }
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="input-form"
             />
           </div>
-          <button
-            onClick={handleSave}
-            className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-          >
+          <button onClick={handleSave} className="save-button">
             Save
           </button>
         </div>

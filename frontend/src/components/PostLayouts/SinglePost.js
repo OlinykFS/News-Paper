@@ -26,16 +26,16 @@ const SinglePost = () => {
     fetchPost();
   }, [id]);
 
-  if (loading) return <p className="text-center">Loading...</p>;
-  if (error) return <p className="text-center text-red-500">Error: {error}</p>;
+  if (loading) return <p className="loading">Loading...</p>;
+  if (error) return <p className="error">Error: {error}</p>;
   if (!post) return <p className="text-center">Post not found.</p>;
 
   return (
-    <div className="bg-white shadow rounded-lg p-6 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+    <div className="single-post">
+      <h1 className="title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
       <div 
         dangerouslySetInnerHTML={{ __html: post.content.rendered }} 
-        className="mb-4 prose prose-lg max-w-none"
+        className="content"
       />
     </div>
   );

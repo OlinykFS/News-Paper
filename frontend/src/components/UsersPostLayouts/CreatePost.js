@@ -15,17 +15,16 @@ const CreatePost = ({ refreshPosts, setError }) => {
       setNewPost({ title: "", content: "" });
       await refreshPosts(); 
     } catch (error) {
-      console.error("Error creating post:", error);
       setError("Failed to create post");
     }
   };
 
   return (
     <div className="my-8">
-      <h2 className="text-2xl font-semibold mb-4">Create New Post</h2>
+      <h2 className="title">Create New Post</h2>
       <form onSubmit={handleCreatePost}>
         <div className="mb-4">
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="title" className="input-label font-bold">
             Title
           </label>
           <input
@@ -34,12 +33,12 @@ const CreatePost = ({ refreshPosts, setError }) => {
             type="text"
             value={newPost.title}
             onChange={handlePostChange}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="input-form"
             required
           />
         </div>
         <div className="mb-6">
-          <label htmlFor="content" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="content" className="input-label font-bold">
             Content
           </label>
           <textarea
@@ -47,14 +46,11 @@ const CreatePost = ({ refreshPosts, setError }) => {
             name="content"
             value={newPost.content}
             onChange={handlePostChange}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="input-form "
             required
           />
         </div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-        >
+        <button type="submit" className="positive-button">
           Create Post
         </button>
       </form>

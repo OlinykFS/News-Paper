@@ -1,0 +1,23 @@
+.single-post h1.title {
+   font-size: 1.875rem;
+   font-weight: 700;
+   margin-bottom: 1rem;
+   overflow-wrap: break-word;
+ }
+ .single-post h3.sub-title{
+   overflow-wrap: break-word;
+ }
+ 
+ .single-post div.content {
+   margin-bottom: 1rem;
+   max-width: none;
+   overflow-wrap: break-word;
+ }
+ 
+ .single-post a {
+   color: #1d4ed8;
+ }
+ 
+ .single-post img {
+   margin-bottom: 1rem;
+ }
