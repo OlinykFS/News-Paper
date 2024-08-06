@@ -19,18 +19,78 @@ const Header = () => {
         <div className="text-2xl font-bold">News Paper</div>
         <nav>
           <ul className="flex space-x-6">
-            <li><Link to="/" className="text-gray-600 hover:text-gray-900">Home</Link></li>
-            <li><Link to="/news" className="text-gray-600 hover:text-gray-900">News Category</Link></li>
+            <li>
+              <Link to="/" className="text-gray-600 hover:text-gray-900">
+                Home
+              </Link>
+            </li>
+            <li className="relative group">
+              <button className="text-gray-600 hover:text-gray-900 focus:outline-none">
+                Menu
+              </button>
+              <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <ul className="py-1">
+                  <li>
+                    <Link
+                      to="/my-posts"
+                      className="block px-4 py-2 text-gray-600 hover:bg-gray-100"
+                    >
+                      My Posts
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/user-post"
+                      className="block px-4 py-2 text-gray-600 hover:bg-gray-100"
+                    >
+                      User Post
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/news-post"
+                      className="block px-4 py-2 text-gray-600 hover:bg-gray-100"
+                    >
+                      News Post
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </li>
             {isAuthenticated ? (
               <>
-                <li><Link to="/my-posts" className="text-gray-600 hover:text-gray-900">My Posts</Link></li>
-                <li><Link to="/profile" className="text-gray-600 hover:text-gray-900">Profile</Link></li>
-                <li><button onClick={handleLogout} className="text-gray-600 hover:text-gray-900">Logout</button></li>
+                <li>
+                  <Link
+                    to="/profile"
+                    className="text-gray-600 hover:text-gray-900"
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={handleLogout}
+                    className="text-gray-600 hover:text-gray-900"
+                  >
+                    Logout
+                  </button>
+                </li>
               </>
             ) : (
               <>
-                <li><Link to="/login" className="text-gray-600 hover:text-gray-900">Login</Link></li>
-                <li><Link to="/register" className="text-gray-600 hover:text-gray-900">Register</Link></li>
+                <li>
+                  <Link to="/login" className="text-gray-600 hover:text-gray-900">
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/register"
+                    className="text-gray-600 hover:text-gray-900"
+                  >
+                    Register
+                  </Link>
+                </li>
               </>
             )}
           </ul>

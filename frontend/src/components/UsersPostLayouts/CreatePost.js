@@ -21,7 +21,7 @@ const CreatePost = ({ refreshPosts, setError }) => {
   };
 
   return (
-    <div className="mb-8">
+    <div className="my-8">
       <h2 className="text-2xl font-semibold mb-4">Create New Post</h2>
       <form onSubmit={handleCreatePost}>
         <div className="mb-4">
