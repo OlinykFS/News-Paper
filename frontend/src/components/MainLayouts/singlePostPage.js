@@ -1,4 +1,3 @@
-import React from 'react';
 import SinglePost from '../PostLayouts/SinglePost';
 import MainLayout from './MainLayout';
 

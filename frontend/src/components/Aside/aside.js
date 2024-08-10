@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Aside = ({ className }) => {
   return (
     <aside className={`p-4 bg-white shadow-md rounded-lg ${className}`}>

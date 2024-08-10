@@ -1,4 +1,3 @@
-import React from 'react';
 import Aside from '../Aside/aside';
 
 const MainLayout = ({ children }) => {

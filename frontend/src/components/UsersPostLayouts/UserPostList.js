@@ -1,4 +1,3 @@
-import React from 'react';
 import { deletePost } from '../../services/api';
 
 const UserPostList = ({ posts, refreshPosts }) => {

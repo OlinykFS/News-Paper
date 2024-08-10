@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { fetchUserPosts } from "../../services/api";
 import UserPostList from "../UsersPostLayouts/UserPostList";
