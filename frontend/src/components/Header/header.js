@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
 
@@ -28,7 +28,7 @@ const Header = () => {
               <button className="text-gray-600 hover:text-gray-900 focus:outline-none">
                 Menu
               </button>
-              <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out delay-150">
                 <ul className="py-1">
                   <li>
                     <Link

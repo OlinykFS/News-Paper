@@ -2,7 +2,7 @@
 .venv/
 env/
 venv/
-
+build
 # Environment variables
 .env
 
@@ -47,9 +47,6 @@ frontend/node_modules/*
 .env.production.local
 
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-qodana.yaml
-qodana.yaml
-build
 
+build
+frontend/build/*
