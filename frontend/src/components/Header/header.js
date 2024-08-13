@@ -28,7 +28,7 @@ const Header = () => {
               <button className="text-gray-600 hover:text-gray-900 focus:outline-none">
                 Menu
               </button>
-              <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out delay-150">
+              <div className="absolute right-0 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-20 hidden group-hover:block">
                 <ul className="py-1">
                   <li>
                     <Link
