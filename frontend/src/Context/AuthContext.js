@@ -6,6 +6,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null); 
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -15,7 +16,8 @@ export const AuthProvider = ({ children }) => {
       if (token) {
         try {
           api.defaults.headers.common["Authorization"] = `JWT ${token}`;
-          await api.get("/auth/users/me/");
+          const response = await api.get("/auth/users/me/");
+          setUser(response.data);
           setIsAuthenticated(true);
         } catch (err) {
           console.error("Token validation failed", err);
@@ -42,9 +44,12 @@ export const AuthProvider = ({ children }) => {
       api.defaults.headers.common[
         "Authorization"
       ] = `JWT ${response.data.access}`;
+      const userResponse = await api.get("/auth/users/me/"); 
+      setUser(userResponse.data);
       setIsAuthenticated(true);
       navigate("/");
     } catch (error) {
+      console.error("Login error", error);
     }
   };
 
@@ -54,13 +59,15 @@ export const AuthProvider = ({ children }) => {
       localStorage.removeItem("refresh_token");
       api.defaults.headers.common["Authorization"] = "";
       setIsAuthenticated(false);
+      setUser(null);
       navigate("/login");
     } catch (error) {
+      console.error("Logout error", error);
     }
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout, loading }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, loading, user, setUser }}>
       {children}
     </AuthContext.Provider>
   );

@@ -12,10 +12,10 @@ const ProfileInfo = ({ user, setUser, setError }) => {
   const handleSave = async () => {
     try {
       const response = await api.patch("/auth/users/me/", updatedUser);
-      setUser(response.data);
+      setUser(response.data);  
       setEditing(false);
     } catch (err) {
-      setError("Failed to update data");
+      setError("Failed to update data: " + err);
     }
   };
 

@@ -16,6 +16,7 @@ const CreatePost = ({ refreshPosts, setError }) => {
       await refreshPosts(); 
     } catch (error) {
       setError("Failed to create post");
+      console.error("Error creating post:", error.response ? error.response.data : error.message);
     }
   };
 
@@ -46,7 +47,7 @@ const CreatePost = ({ refreshPosts, setError }) => {
             name="content"
             value={newPost.content}
             onChange={handlePostChange}
-            className="input-form "
+            className="input-form"
             required
           />
         </div>

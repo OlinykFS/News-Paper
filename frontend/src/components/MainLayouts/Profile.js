@@ -7,11 +7,10 @@ import CreatePost from "../UsersPostLayouts/CreatePost";
 import UserPostList from "../UsersPostLayouts/UserPostList";
 
 const Profile = () => {
-  const [user, setUser] = useState(null);
+  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [posts, setPosts] = useState([]);
-  const { isAuthenticated, logout } = useContext(AuthContext);
+  const { isAuthenticated, logout, user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,9 +21,6 @@ const Profile = () => {
 
     const fetchUserData = async () => {
       try {
-        const response = await api.get("/auth/users/me/");
-        setUser(response.data);
-
         const postsResponse = await api.get("blog/my-posts/");
         if (Array.isArray(postsResponse.data.results)) {
           setPosts(postsResponse.data.results);
@@ -59,13 +55,17 @@ const Profile = () => {
   };
 
   if (loading) return <div className="loading">Loading...</div>;
-  if (error) return <div className="text-center text-red-500 mt-4">{error}</div>;
+  if (error) return <div className="error">{error}</div>;
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg mt-8">
       <ProfileInfo user={user} setUser={setUser} setError={setError} />
       <CreatePost refreshPosts={refreshPosts} setError={setError} />
-      <UserPostList posts={posts} refreshPosts={refreshPosts} />
+      <UserPostList
+        posts={posts}
+        refreshPosts={refreshPosts}
+        currentUserId={user?.id}
+      />
     </div>
   );
 };
