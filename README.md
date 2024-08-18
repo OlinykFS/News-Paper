@@ -1,6 +1,14 @@
 ## Project Name
 News Paper
-
+<br>
+<br>
+![project-preview](https://github.com/user-attachments/assets/8ee036f9-4102-433c-8f2e-a6020b6c8100)
+ <br>
+ <br>
+This project is a news website that features JWT-based
+                        authentication, API interactions with the backend to fetch news data, a user dashboard, and CRUD
+                        operations for managing posts. Users can securely log in, access their personalized dashboard,
+                        and interact with news posts
 ## Requirements
  - Docker
 
